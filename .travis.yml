@@ -12,6 +12,9 @@ before_install:
  - hdid "MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.dmg"
  - sudo installer -pkg "/Volumes/Mono Framework MDK ${MONO_VER}/MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.pkg" -target /
 
+before_script:
+ - chmod +x .ci/nunit.sh
+
 script:
  - xbuild 
  - .ci/nunit.sh Tests/bin/Debug/Tests.dll
