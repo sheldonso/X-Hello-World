@@ -2,5 +2,5 @@ language: csharp
 
 solution: XHelloWorld.sln
 
-script:
-- xbuild /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true /target:Build XHelloWorld.sln
+# script:
+# - xbuild /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true /target:Build XHelloWorld.sln
