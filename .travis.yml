@@ -1,6 +1,13 @@
-language: csharp
+language: objective-c
 
-solution: XHelloWorld.sln
-
-# script:
-# - xbuild /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true /target:Build XHelloWorld.sln
+env:
+ global:
+  - EnableNuGetPackageRestore=true
+ matrix:
+  - MONO_VERSION="3.4.0"
+before_install:
+ - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
+ - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
+ - .ci/travis/nuget-restore.sh XHelloWorld.sln
+script:
+ - xbuild /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true /target:Build XHelloWorld.sln
