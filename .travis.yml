@@ -12,9 +12,28 @@ before_install:
  - hdid "MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.dmg"
  - sudo installer -pkg "/Volumes/Mono Framework MDK ${MONO_VER}/MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.pkg" -target /
 
-before_script:
- - chmod +x .ci/nunit.sh
-
 script:
- - xbuild 
- - .ci/nunit.sh Tests/bin/Debug/Tests.dll
+ - xbuild
+
+
+#  language: objective-c
+
+# env:
+#  global:
+#   - EnableNuGetPackageRestore=true
+#  matrix:
+#   - MONO_VERSION="3.4.0"
+# before_install:
+#  - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
+#  - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
+#  - .ci/travis/nuget-restore.sh Mobile.sln
+# script:
+#  - xbuild /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true /target:Build XHelloWorld.sln
+
+#  language: csharp
+
+# solution: XHelloWorld.sln
+
+# # script:
+# # - xbuild /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true /target:Build XHelloWorld.sln
+
